@@ -909,21 +909,27 @@
     };
   </script>
 <script>
+    if (screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock("portrait").then(() => {
+        console.log("Ekran bloklandi!");
+    }).catch((err) => {
+        console.log("Ekranni bloklash imkoni bo‘lmadi:", err);
+    });
+}
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (window.Telegram && Telegram.WebApp) {
-            Telegram.WebApp.expand();  // To‘liq ekran rejimi
-            Telegram.WebApp.ready();   // Ishga tushirish
-
-            // 📌 Ekran orientatsiyasini bloklash
-            if (Telegram.WebApp.isExpanded) {
-                screen.orientation.lock("portrait").then(() => {
-                    console.log("Ekran portret rejimiga o‘rnatildi!");
-                }).catch((error) => {
-                    console.log("Ekranni bloklashni imkoni bo‘lmadi:", error);
-                });
-            }
+            Telegram.WebApp.ready(); // Web App tayyorligini bildiradi
+            setTimeout(() => {
+                Telegram.WebApp.expand(); // To‘liq ekran qilish
+                console.log("✅ Web App to‘liq ekranga o‘tdi");
+            }, 500);
+        } else {
+            console.log("❌ Telegram WebApp yuklanmadi!");
         }
     });
+</script>
+
 </script>
 
 
