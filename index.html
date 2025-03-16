@@ -908,11 +908,17 @@
     };
   </script>
  <script>
-    if (window.Telegram && window.Telegram.WebApp) {
-        Telegram.WebApp.expand(); // Web App ni to‘liq ekranga chiqarish
-        Telegram.WebApp.ready();  // Web App-ni to‘liq yuklanishiga yordam beradi
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.Telegram && Telegram.WebApp) {
+            Telegram.WebApp.expand(); // Web App-ni to‘liq ekranga chiqarish
+            Telegram.WebApp.ready(); // Ishga tushirish
+            console.log("Telegram WebApp ishlayapti:", Telegram.WebApp);
+        } else {
+            console.log("Telegram WebApp yuklanmadi!");
+        }
+    });
 </script>
+
 
 
 </body>
