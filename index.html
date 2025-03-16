@@ -907,17 +907,24 @@
       speed: 300
     };
   </script>
- <script>
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         if (window.Telegram && Telegram.WebApp) {
-            Telegram.WebApp.expand(); // Web App-ni to‘liq ekranga chiqarish
-            Telegram.WebApp.ready(); // Ishga tushirish
-            console.log("Telegram WebApp ishlayapti:", Telegram.WebApp);
-        } else {
-            console.log("Telegram WebApp yuklanmadi!");
+            Telegram.WebApp.expand();  // To‘liq ekran rejimi
+            Telegram.WebApp.ready();   // Ishga tushirish
+
+            // 📌 Ekran orientatsiyasini bloklash
+            if (Telegram.WebApp.isExpanded) {
+                screen.orientation.lock("portrait").then(() => {
+                    console.log("Ekran portret rejimiga o‘rnatildi!");
+                }).catch((error) => {
+                    console.log("Ekranni bloklashni imkoni bo‘lmadi:", error);
+                });
+            }
         }
     });
 </script>
+
 
 
 
