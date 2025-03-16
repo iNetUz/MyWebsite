@@ -918,16 +918,29 @@
 }
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-        if (window.Telegram && Telegram.WebApp) {
-            Telegram.WebApp.ready(); // Web App tayyorligini bildiradi
-            setTimeout(() => {
-                Telegram.WebApp.expand(); // To‘liq ekran qilish
-                console.log("✅ Web App to‘liq ekranga o‘tdi");
-            }, 500);
-        } else {
-            console.log("❌ Telegram WebApp yuklanmadi!");
+    if (window.Telegram && Telegram.WebApp) {
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
+        
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
         }
-    });
+        
+        console.log("✅ Web App full screen qilindi!");
+    } else {
+        console.log("❌ Telegram WebApp yuklanmadi!");
+    }
+});
+document.addEventListener("DOMContentLoaded", function () {
+            if (window.Telegram && Telegram.WebApp) {
+                Telegram.WebApp.ready(); // Web App tayyorlandi
+                Telegram.WebApp.expand(); // Full ekran qilish
+                
+                console.log("✅ Web App yuklandi va full screen qilindi!");
+            } else {
+                console.log("❌ Telegram WebApp yuklanmadi!");
+            }
+        });
 </script>
 
 </script>
