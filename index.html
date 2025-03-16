@@ -907,11 +907,13 @@
       speed: 300
     };
   </script>
-  <script>
+ <script>
     if (window.Telegram && window.Telegram.WebApp) {
-        Telegram.WebApp.expand(); // To‘liq ekranga chiqarish
+        Telegram.WebApp.expand(); // Web App ni to‘liq ekranga chiqarish
+        Telegram.WebApp.ready();  // Web App-ni to‘liq yuklanishiga yordam beradi
     }
 </script>
+
 
 </body>
 
